@@ -45,8 +45,6 @@ INSTALLED_APPS = [
     # DRF 
     'rest_framework',
 
-    
-    
 ]
 
 MIDDLEWARE = [
