@@ -40,13 +40,12 @@ INSTALLED_APPS = [
 
     # apps
     'guidance',
-    'user',
+    'user.apps.UserConfig',
 
     # DRF 
     'rest_framework',
 
-    # User app configuration
-    'user.apps.UserConfig',
+    
     
 ]
 
