@@ -22,7 +22,7 @@ class RandomGuidanceDetail(generics.RetrieveAPIView):
         if not queryset:
             return Response({"message": "No guidance matching your search was found in the database."}, status=status.HTTP_404_NOT_FOUND)
         
-        # get the random of guidance
+        # get the random guidance
         random_index = randint(0, queryset.count()-1)
 
         return queryset[random_index]
