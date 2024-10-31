@@ -12,3 +12,6 @@ class Guidance(models.Model):
     image = models.ImageField(upload_to="guidance_images/")
     religion = models.CharField(max_length=1, choices=Religion.choices)
     favorite_users = models.ManyToManyField(UserProfile, related_name="favorite_guidances")
+
+    def __str__(self) -> str:
+        return f"{self.title} - {self.content}"
