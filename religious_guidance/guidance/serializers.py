@@ -6,7 +6,7 @@ class GuidanceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Guidance
-        fields = ['title', 'content', 'image', 'religion', 'favorite_count']
+        fields = ['id', 'title', 'content', 'image', 'religion', 'favorite_count']
 
     def get_favorite_count(self, obj) -> int:
         return obj.favorite_users.count()
