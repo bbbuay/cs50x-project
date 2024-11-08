@@ -47,3 +47,20 @@ class LikeGuidanceView(APIView):
         else:
             profile.favorite_guidances.add(guidance)
             return Response({"message": "User successfully like this guidance."}, status=status.HTTP_200_OK)
+        
+class UnlikeGuidanceView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, id):
+        profile = request.user.profile 
+
+        try:
+            guidance = Guidance.objects.get(id=id)
+        except Guidance.DoesNotExist:
+            return Response({"error": "Guidance does not exist of the given ID"}, status=status.HTTP_404_NOT_FOUND)
+
+        if profile not in guidance.favorite_users.all():
+            return Response({"error": "The user already unlike this guidance"}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            profile.favorite_guidances.remove(guidance)
+            return Response({"message": "User successfully unlike this guidance."}, status=status.HTTP_200_OK) 
