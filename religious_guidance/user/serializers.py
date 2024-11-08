@@ -43,10 +43,35 @@ class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "username", "email", "first_name", "last_name", "profile_image"]
+        read_only_fields = ["id", "username", "email"]
 
-    def get_profile_image(self, obj):
-        profile_image = obj.profile.profile_img
+    def get_profile_image(self, instance):
+        profile_image = instance.profile.profile_img
         return profile_image if profile_image else None
+    
+    def update(self, instance, validated_data):
+        # update first name and lastname
+        instance.first_name = validated_data.get("first_name", instance.first_name)
+        instance.last_name = validated_data.get("last_name", instance.last_name)
+        instance.save()
+
+        profile_image = validated_data.get('profile_image')
+        if profile_image:
+            profile = instance.profile
+            profile.profile_image = profile_image
+            profile.save()
+
+        return instance
+    
+    def validate_first_name(self, value):
+        if not value:
+            raise serializers.ValidationError("The user need to provide the first name")
+        return value
+    
+    def validate_last_name(self, value):
+        if not value:
+            raise serializers.ValidationError("The user need to provide the last name")
+        return value
 
 class FavoriteGuidanceSerializer(serializers.ModelSerializer):
     religion = serializers.SerializerMethodField()
