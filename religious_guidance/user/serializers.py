@@ -1,5 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
+from guidance.models import Guidance
+from .models import UserProfile
 
 class RegisterUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
@@ -34,3 +36,15 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+    
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    profile_image = serializers.SerializerMethodField()
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "email", "first_name", "last_name", "profile_image"]
+
+    def get_profile_image(self, obj):
+        profile_image = obj.profile.profile_img
+        return profile_image if profile_image else None
