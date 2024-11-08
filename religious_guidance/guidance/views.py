@@ -5,11 +5,12 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.views import APIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 class RandomGuidanceDetail(generics.RetrieveAPIView):
     queryset = Guidance.objects.all()
     serializer_class = GuidanceSerializer
+    permission_classes = [AllowAny]
 
     def get_object(self) -> Guidance:
         # get the specific religion from query parameter
