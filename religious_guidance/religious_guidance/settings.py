@@ -38,17 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework', # DRF
+    'rest_framework_simplejwt', # JWT Authentication
+    'corsheaders', # CORS
 
     # apps
     'guidance',
     'user.apps.UserConfig',
-
-    # DRF 
-    'rest_framework',
-
-    # JWT Authentication
-    'rest_framework_simplejwt',
-
+    
 ]
 
 MIDDLEWARE = [
@@ -59,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # CORS
 ]
 
 ROOT_URLCONF = 'religious_guidance.urls'
@@ -152,3 +150,7 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5500",  # the port for running front-end
+]
