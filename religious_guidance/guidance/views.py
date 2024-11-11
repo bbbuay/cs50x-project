@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
+from django.shortcuts import render
 
 class RandomGuidanceDetail(generics.RetrieveAPIView):
     queryset = Guidance.objects.all()
@@ -64,3 +65,8 @@ class UnlikeGuidanceView(APIView):
         else:
             profile.favorite_guidances.remove(guidance)
             return Response({"message": "User successfully unlike this guidance."}, status=status.HTTP_200_OK) 
+        
+
+# render pages
+def homepage_view(request):
+    return render(request, "index.html")
