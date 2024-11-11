@@ -12,8 +12,8 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/index.css">
 
 </head>
 <body>
@@ -21,7 +21,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../assets/images/logo.png" alt="Logo" width="40" height="40">
+                <img src="../static/images/logo.png" alt="Logo" width="40" height="40">
             Religious Guidances
             </a>
             <ul class="navbar-nav">
@@ -32,7 +32,7 @@
                     <a class="nav-link" href="#">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Log In</a>
+                    <a class="nav-link" href="#">Logout</a>
                 </li>
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-primary">Buddhism</button>
@@ -44,19 +44,18 @@
 
     <!-- Main Content -->
      <main>
-        <!-- Login Form -->
-         <h1>Login</h1>
-        <form>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email">
+        <h1>Be Grateful in All Circumstances</h1>
+        <img src="http://127.0.0.1:8000/media/guidance_images/img_019.jpg" height="300" alt="guidance-image">
+        <section>
+            <div>
+                Christianity teaches gratitude as a way to recognize God’s blessings, even in challenging times (1 Thessalonians 5:18). Practicing gratitude enhances joy, shifts focus to the positive, and helps us trust in God’s provision.
             </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password">
+            <div id="like-display">
+                123 &#9829;
+                <button type="button" class="btn btn-outline-danger">Like</button>            
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
+        </section>
+
      </main>
    
 </body>
