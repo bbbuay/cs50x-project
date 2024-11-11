@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import RandomGuidanceDetail, LikeGuidanceView, UnlikeGuidanceView
-from .views import homepage_view
+from .views import RandomGuidanceDetail, LikeGuidanceView, UnlikeGuidanceView, homepage_view
 
 urlpatterns = [
     path('', homepage_view, name='homepage'),
