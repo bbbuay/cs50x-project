@@ -1,8 +1,10 @@
 {% extends "layout.html" %}
+{% load static %}
 
 {% block title %}Login{% endblock%}
 
 {% block header %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
 {% endblock %}
 
 {% block main %}
@@ -17,6 +19,8 @@
         <label for="password" class="form-label">Password</label>
         <input type="password" class="form-control" id="password">
         </div>
-        <button type="submit" class="btn btn-primary">Login</button>
+        <p>Don’t have an account? <a href="{% url 'register'%}">Register</a>  to get started.</p>
+        <button id="login-button" type="submit" class="btn btn-primary mt-2">Login</button>
     </form>
+    
 {% endblock %}

@@ -1,0 +1,20 @@
+h1 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+form {
+    width: 60%;
+    margin: 0 auto;
+}
+
+form label {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    text-align: left;
+}
+
+#login-button{
+    padding: 8px 15px;
+}
