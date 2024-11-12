@@ -3,13 +3,12 @@
 }
 
 h1 {
-    
     font-weight: 700;
     margin-bottom: 20px;
 }
 
 img {
-    height: 350;
+    height: 350px;
     width: 500px;
     object-fit: cover;
     object-position: center;
