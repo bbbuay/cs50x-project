@@ -126,6 +126,11 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+# the paths that Django will get for additional static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'religious_guidance', 'static'), 
+]
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
