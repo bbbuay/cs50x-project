@@ -4,11 +4,13 @@
 {% block title %}Profile{% endblock%}
 
 {% block header %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 
 {% block main %}
+    <h1>Profile</h1>
     <!-- Display User's Profile -->
-    <img src="{% static 'images/person_icon.png' %}" alt="profile_image">
+    <img src="{% static 'images/person_icon.png' %}" alt="profile_image" class="rounded-circle shadow">
     <table class="table">
         <tbody>
         <tr>
