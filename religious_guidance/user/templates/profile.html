@@ -5,26 +5,27 @@
 
 {% block header %}
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+<script src="{% static 'js/profile.js' %}"></script>
 {% endblock %}
 
 {% block main %}
     <h1>Profile</h1>
     <!-- Display User's Profile -->
-    <img src="{% static 'images/person_icon.png' %}" alt="profile_image" class="rounded-circle shadow">
+    <img id="profile-img" src="{% static 'images/person_icon.png' %}" alt="profile_image" class="rounded-circle shadow">
     <table class="table">
         <tbody>
         <tr>
             <th scope="row">Username</th>
-            <td>bbbuay</td>
+            <td id="username">bbbuay</td>
 
         </tr>
         <tr>
             <th scope="row">Email</th>
-            <td>Emai@gmail.com</td>
+            <td id="email">Emai@gmail.com</td>
         </tr>
         <tr>
             <th scope="row">Name</th>
-            <td>Hello World</td>
+            <td id="full-name">Hello World</td>
         </tr>
         </tbody>
     </table>
