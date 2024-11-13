@@ -18,3 +18,11 @@ form {
 #register-button {
     padding: 8px 15px;
 }
+
+#successfulModal .modal-body, #FailModal .modal-body  {
+    margin: 20px;
+}
+
+#FailModal {
+    color: red;
+}
