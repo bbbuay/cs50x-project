@@ -8,7 +8,7 @@ class RegisterUserView(generics.CreateAPIView):
     serializer_class = RegisterUserSerializer
     permission_classes = [AllowAny]
 
-class UserProfileView(generics.RetrieveUpdateAPIView):
+class UserProfileView(generics.RetrieveAPIView):
     serializer_class = UserProfileSerializer
     permission_classes = [IsAuthenticated]
 
