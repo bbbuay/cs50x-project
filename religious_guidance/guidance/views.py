@@ -8,6 +8,12 @@ from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated, AllowAny
 from django.shortcuts import render
 
+class RetrieveGuidanceView(generics.RetrieveAPIView):
+    queryset = Guidance.objects.all()
+    serializer_class = GuidanceSerializer
+    permission_classes = [AllowAny]
+    lookup_field = "id"
+
 class RandomGuidanceDetail(generics.RetrieveAPIView):
     queryset = Guidance.objects.all()
     serializer_class = GuidanceSerializer
