@@ -2,7 +2,7 @@ from rest_framework import serializers
 from .models import Guidance
 
 class GuidanceSerializer(serializers.ModelSerializer):
-    favorite_count = serializers.IntegerField(source='get_favorite_count', read_only=True)
+    favorite_count = serializers.SerializerMethodField()
 
     class Meta:
         model = Guidance
