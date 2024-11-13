@@ -5,22 +5,40 @@
 
 {% block header %}
 <link rel="stylesheet" href="{% static 'css/login.css' %}">
+<script src="{% static 'js/login.js' %}"></script>
 {% endblock %}
 
 {% block main %}
     <!-- Login Form -->
     <h1>Login</h1>
-    <form>
+    <form id="login-form">
+        {% csrf_token %} 
         <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" required>
         </div>
         <div class="mb-3">
         <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password">
+        <input type="password" class="form-control" id="password" required>
         </div>
         <p>Don’t have an account? <a href="{% url 'register'%}">Register</a>  to get started.</p>
         <button id="login-button" type="submit" class="btn btn-primary mt-2">Login</button>
     </form>
+
+
+    <!--  Notification Modal for Login Error  -->
+    <div class="modal fade" id="FailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Login Failed!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <strong>Login failed.</strong> The email or password may be incorrect. Please try again.
+                </div>
+            </div>
+        </div>
+    </div>
     
 {% endblock %}
