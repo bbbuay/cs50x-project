@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function (){
     registerForm.addEventListener("submit", function(e){
         e.preventDefault();
 
-        const register_data = {
+        const registerData = {
             username: registerForm.querySelector("#username").value,
             email: registerForm.querySelector("#email").value,
             first_name: registerForm.querySelector("#first_name").value,
@@ -18,9 +18,10 @@ document.addEventListener("DOMContentLoaded", function (){
         fetch(registerForm.action, {
             method: registerForm.method,
             headers: {
-                "Content-Type": "application/json" 
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCookie("csrftoken"),
             },
-            body: JSON.stringify(register_data), // convert the data to JSON
+            body: JSON.stringify(registerData), // convert the data to JSON
         })
         .then(response => {
             if (!response.ok){
@@ -46,4 +47,20 @@ function showFailRegisterModal() {
 
     // Show Modal
     new bootstrap.Modal(failModal).show()
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
 }
