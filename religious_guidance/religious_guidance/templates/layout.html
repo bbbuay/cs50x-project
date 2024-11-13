@@ -38,18 +38,6 @@
             margin: 0px 20px;
             margin-left: auto;
         }
-        #religion-selection{
-            color: gray;
-            border-color: white;
-        }
-        #religion-selection button:hover{
-            border-color: white;
-            background-color: #8EACCD;
-        }
-        #religion-selection .active{
-            background-color: #C4E1F6;
-            border-color: white;
-        }
         #logo-img {
             border-radius: 50%;
             width: 40px;
@@ -80,10 +68,7 @@
                     <a class="nav-link" href="#">Logout</a>
                 </li>  
             </ul>
-            <div id="religion-selection" class="btn-group" role="group">
-                <button type="button" class="btn btn-light active">Buddhism</button>
-                <button type="button" class="btn btn-light">Christianity</button>
-            </div>
+            {% block navbar %}{% endblock %}
         </div>
     </nav>
 

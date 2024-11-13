@@ -21,3 +21,36 @@ img {
     letter-spacing: 1.5px;
     word-spacing: 5px;
 }
+
+#religion-selection{
+    color: gray;
+    border-color: white;
+}
+#religion-selection button:hover{
+    border-color: white;
+    background-color: #8EACCD;
+}
+#religion-selection .selected{
+    background-color: #C4E1F6;
+    border-color: white;
+}
+
+#login-modal strong {
+    /* text-decoration: underline dotted 3px; */
+    text-shadow: 1px 1px #8EACCD;
+}
+
+#login-modal .modal-header {
+    background-color: #C4E1F6;;
+}
+
+
+#login-modal .modal-body{
+    font-weight: 500;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#login-modal #error-msg{
+    margin: 10px;
+}

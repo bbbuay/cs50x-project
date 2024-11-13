@@ -4,19 +4,47 @@
 {% block title %}Religious Guidances{% endblock%}
 
 {% block header %}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock %}
+
+{% block navbar %}
+    <div id="religion-selection" class="btn-group" role="group">
+        <button type="button" class="btn btn-light" value="B">Buddhism</button>
+        <button type="button" class="btn btn-light" value="C">Christianity</button>
+    </div>
 {% endblock %}
 
 {% block main %}
-    <h1>Be Grateful in All Circumstances</h1>
-    <img src="http://127.0.0.1:8000/media/guidance_images/img_019.jpg" alt="guidance-image" class="rounded shadow-lg">
+    <h1 id="title"></h1>
+    <img alt="guidance-image" class="rounded shadow-lg" id="guidance-image">
     <section>
-        <div id="content">
-            Christianity teaches gratitude as a way to recognize God’s blessings, even in challenging times (1 Thessalonians 5:18). Practicing gratitude enhances joy, shifts focus to the positive, and helps us trust in God’s provision.
+        <div id="content"></div>
+        <div id="like-display" class="mb-3">
+            <span>123</span>&#9829;
+            <button id="like-button" type="button" class="btn btn-outline-danger">Like</button>            
         </div>
-        <div id="like-display">
-            123 &#9829;
-            <button type="button" class="btn btn-outline-danger">Like</button>            
-        </div>
+        <button id="random-button" type="button" class="btn btn-outline-primary">Continue Random Guidances</button>          
     </section>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="login-modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Error</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="error-msg">
+                        <strong>Log in</strong> to like the article.
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
