@@ -46,6 +46,48 @@
         }
     </style>
 
+    <script>
+        function isLoggedIn() {
+            return localStorage.getItem("authToken") !== null;
+        }
+
+        function logout(e) {
+            e.preventDefault();
+
+            // remove authToken from localStorage
+            localStorage.removeItem("authToken");
+
+            // Redirect the user to the login page
+            window.location.href = "{% url 'login' %}";
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            authLink = document.querySelector("#auth-link");
+            profileNav = document.querySelector("#profile-nav");
+
+            if (isLoggedIn()) {
+                // If user logged in, display Logout Link
+                authLink.textContent = "Logout";
+                authLink.href = "#";
+                authLink.onclick = logout;
+
+                // If user logged in, display profile
+                profileNav.style.display = "block";
+
+            } else {
+                // If user logged out, display Login Link
+                authLink.textContent = "Log In";
+                authLink.href = "{% url 'login' %}";
+                authLink.onclick = null;
+
+                // If user logged out, hide profile
+                profileNav.style.display = "none";
+            }
+
+            
+    })
+    </script>
+
     {% block header %}{% endblock %}
 
 </head>
@@ -61,11 +103,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'homepage' %}">Home Page</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                <li class="nav-item" id="profile-nav">
+                    <a  class="nav-link" href="{% url 'profile' %}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a id="auth-link" class="nav-link"></a>
                 </li>  
             </ul>
             {% block navbar %}{% endblock %}
