@@ -46,11 +46,8 @@ document.addEventListener("DOMContentLoaded", async function () {
             });
 
             if (response.ok) {
-                // Redirect to home page
-                const data = await response.json();
-                console.log("Profile image uploaded:", data);
-
-                // window.location.href = "/profile/";
+                // reload profile page
+                window.location.href = "/profile/";
             }  else {
                 new bootstrap.Modal(document.querySelector("#FailModal")).show();
             }   
