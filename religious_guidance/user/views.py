@@ -29,8 +29,6 @@ class UpdateProfileView(generics.UpdateAPIView):
     def get_object(self):
         return self.request.user.profile
     
-    def patch(self, request, *args, **kwargs):
-        return super().patch(request, *args, **kwargs)
 
 # render pages
 def login_view(request):

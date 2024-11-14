@@ -22,4 +22,52 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.querySelector("#profile-img").src = img_url;
     } 
 
+    const imgForm = document.querySelector("#upload-img-form");
+    imgForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        let profileImage = imgForm.querySelector("#profile_image").files[0];
+
+        if(!profileImage) {
+            showFailModal("Please provide the image file.");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("profile_img", profileImage);
+
+        try {
+            const response = await fetch("/api/profile/", {
+                method: "PATCH",
+                headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("authToken")}`,
+                },
+                body: formData,
+            });
+
+            if (response.ok) {
+                // Redirect to home page
+                const data = await response.json();
+                console.log("Profile image uploaded:", data);
+
+                // window.location.href = "/profile/";
+            }  else {
+                error = await response.json()
+                console.log(`E1: ${error}`)
+                throw error.detail;
+            }   
+
+        } catch (error) {
+            console.log(`E2: ${error}`)
+            showFailModal(error);
+        }
+    });
 });
+
+function showFailModal(error) {
+    modal = document.querySelector("#FailModal")
+    modal.querySelector(".modal-body").textContent = `Error: ${error}`
+
+    // Notification Modal for Upload Image Error
+    new bootstrap.Modal(modal).show()
+}

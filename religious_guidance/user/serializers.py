@@ -41,13 +41,19 @@ class RegisterUserSerializer(serializers.ModelSerializer):
 class UserSerializer(serializers.ModelSerializer):
     profile_image = serializers.SerializerMethodField()
     favorite_guidances = serializers.SerializerMethodField()
+
     class Meta:
         model = User
         fields = ["id", "username", "email", "first_name", "last_name", "profile_image", "favorite_guidances"]
 
     def get_profile_image(self, instance):
         profile_image = instance.profile.profile_img
-        return profile_image if profile_image else None
+        if profile_image:
+            # return the url of the profile image
+            request = self.context.get("request")
+            return request.build_absolute_uri(profile_image.url)
+        # otherwise return None
+        return None
     
     def get_favorite_guidances(self, instance):
         return list(instance.profile.favorite_guidances.values_list("id", flat=True))

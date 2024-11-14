@@ -12,6 +12,17 @@
     <h1>Profile</h1>
     <!-- Display User's Profile -->
     <img id="profile-img" src="{% static 'images/person_icon.png' %}" alt="profile_image" class="rounded-circle shadow">
+
+    <form id="upload-img-form" class="row g-3" enctype="multipart/form-data">
+        <div class="col-auto">
+            <label for="profile_image" class="form-label visually-hidden">Profile Image</label>
+            <input type="file" class="form-control" id="profile_image" name="profile_image" accept="images/*" required>
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Update Profile Image</button>
+        </div>
+    </form>
+
     <table class="table">
         <tbody>
         <tr>
@@ -29,4 +40,17 @@
         </tr>
         </tbody>
     </table>
+
+    <!--  Notification Modal for Login Error  -->
+    <div class="modal fade" id="FailModal" style="color: red;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5">Upload Image Failed!</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
