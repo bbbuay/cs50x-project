@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from guidance.models import Guidance
+from .models import UserProfile
 
 class RegisterUserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, required=True)
@@ -37,7 +38,7 @@ class RegisterUserSerializer(serializers.ModelSerializer):
         return user
     
 
-class UserProfileSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     profile_image = serializers.SerializerMethodField()
     favorite_guidances = serializers.SerializerMethodField()
     class Meta:
@@ -71,3 +72,8 @@ class FavoriteGuidanceSerializer(serializers.ModelSerializer):
 
     def get_religion(self, obj):
         return obj.get_religion_display()
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ["profile_img"]

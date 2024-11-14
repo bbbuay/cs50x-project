@@ -1,5 +1,5 @@
 from rest_framework import generics
-from .serializers import RegisterUserSerializer, UserProfileSerializer, FavoriteGuidanceSerializer
+from .serializers import RegisterUserSerializer, UserSerializer, FavoriteGuidanceSerializer, ProfileSerializer
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.shortcuts import render
 
@@ -8,8 +8,8 @@ class RegisterUserView(generics.CreateAPIView):
     serializer_class = RegisterUserSerializer
     permission_classes = [AllowAny]
 
-class UserProfileView(generics.RetrieveAPIView):
-    serializer_class = UserProfileSerializer
+class UserView(generics.RetrieveAPIView):
+    serializer_class = UserSerializer
     permission_classes = [IsAuthenticated]
 
     def get_object(self):
@@ -22,6 +22,15 @@ class FavoriteGuidanceView(generics.ListAPIView):
     def get_queryset(self):
         return self.request.user.profile.favorite_guidances.all()
     
+class UpdateProfileView(generics.UpdateAPIView):
+    serializer_class = ProfileSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_object(self):
+        return self.request.user.profile
+    
+    def patch(self, request, *args, **kwargs):
+        return super().patch(request, *args, **kwargs)
 
 # render pages
 def login_view(request):

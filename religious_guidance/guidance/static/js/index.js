@@ -118,7 +118,7 @@ async function unlikeGuidance(id) {
 
 async function getFavGuidances() {
     const token = localStorage.getItem("authToken");
-    response = await fetch(`/api/profile/`, {
+    response = await fetch(`/api/user/`, {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     // get the profile data from the API 
     const token = localStorage.getItem("authToken");
-    const response = await fetch("/api/profile/", {
+    const response = await fetch("/api/user/", {
         method: "GET",
         headers: {
             "Authorization": `Bearer ${token}`,
