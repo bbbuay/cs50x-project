@@ -1,10 +1,10 @@
-# Religious Guidance
-#### Video Demo:  <URL HERE>
+# Religious Guidances
+#### Video Demo:  [CS50x: Religious Guidances](https://youtu.be/lu1TV9Fm-90)
 #### Description: 
 
-For my final project, I created a website called Religious Guidance where users can get random religious teachings. Growing up in Thailand, where Buddhism has a strong influence, inspired me. I found that religious teachings helped me understand life, feel less suffering, and find more happiness.
+For my final project, I created a website called `Religious Guidance` where users can get random religious teachings. Growing up in Thailand, where Buddhism has a strong influence, inspired me. I found that religious teachings helped me understand life, feel less suffering, and find more happiness.
 
-On this site, users can choose teachings from either Buddhism or Christianity and click a button to get a random one. If they find one they like, they can ‘like’ it as long as they’re logged in.
+On this site, users can choose teachings from either **Buddhism** or **Christianity** and can click a _Continue Random Guidances_ button to get a new random guidance. If the user like the guidance, user can click the _Like_ button in order to like that guidance.
 
 ## Table of Contents
 - [Pages](#pages)
