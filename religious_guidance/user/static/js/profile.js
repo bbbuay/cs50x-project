@@ -52,22 +52,11 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 // window.location.href = "/profile/";
             }  else {
-                error = await response.json()
-                console.log(`E1: ${error}`)
-                throw error.detail;
+                new bootstrap.Modal(document.querySelector("#FailModal")).show();
             }   
 
         } catch (error) {
-            console.log(`E2: ${error}`)
-            showFailModal(error);
+            new bootstrap.Modal(document.querySelector("#FailModal")).show();
         }
     });
 });
-
-function showFailModal(error) {
-    modal = document.querySelector("#FailModal")
-    modal.querySelector(".modal-body").textContent = `Error: ${error}`
-
-    // Notification Modal for Upload Image Error
-    new bootstrap.Modal(modal).show()
-}
